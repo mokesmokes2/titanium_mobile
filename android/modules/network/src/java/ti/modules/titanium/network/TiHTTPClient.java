@@ -56,6 +56,7 @@ import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.Credentials;
 import org.apache.http.auth.NTCredentials;
 import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpResponseException;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -161,6 +162,9 @@ public class TiHTTPClient
 	private ArrayList<File> tmpFiles = new ArrayList<File>();
 	private ArrayList<X509TrustManager> trustManagers = new ArrayList<X509TrustManager>();
 	private ArrayList<X509KeyManager> keyManagers = new ArrayList<X509KeyManager>();
+
+	private static CookieStore cookieStore = NetworkModule.getHTTPCookieStoreInstance();
+
 
 	protected HashMap<String,String> headers = new HashMap<String,String>();
 	
@@ -1012,7 +1016,10 @@ public class TiHTTPClient
 		HttpProtocolParams.setUseExpectContinue(params, false);
 		HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
 
-		return new DefaultHttpClient(new ThreadSafeClientConnManager(params, registry), params);
+		DefaultHttpClient httpClient = new DefaultHttpClient(new ThreadSafeClientConnManager(params, registry), params);
+		httpClient.setCookieStore(cookieStore);
+
+		return httpClient;
 	}
 
 	protected DefaultHttpClient getClient(boolean validating)

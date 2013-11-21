@@ -359,11 +359,22 @@ TI_INLINE void waitForMemoryPanicCleared();   //WARNING: This must never be run 
 	return YES;
 }
 
+/* Mark Changed!!! This is deprecated
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
 	[launchOptions removeObjectForKey:UIApplicationLaunchOptionsURLKey];	
 	[launchOptions setObject:[url absoluteString] forKey:@"url"];
     return YES;
+}
+*/
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+	[launchOptions removeObjectForKey:UIApplicationLaunchOptionsURLKey];
+	[launchOptions setObject:[url absoluteString] forKey:@"url"];
+	[launchOptions removeObjectForKey:UIApplicationLaunchOptionsSourceApplicationKey];
+	[launchOptions setObject:sourceApplication forKey:@"source"];
+	return YES;
 }
 
 -(void)waitForKrollProcessing
@@ -500,6 +511,7 @@ TI_INLINE void waitForMemoryPanicCleared();   //WARNING: This must never be run 
     
     //TIMOB-3432. Ensure url is cleared when resume event is fired.
     [launchOptions removeObjectForKey:@"url"];
+    [launchOptions removeObjectForKey:@"source"];
 
 	[[NSNotificationCenter defaultCenter] postNotificationName:kTiResumeNotification object:self];
 	

@@ -118,13 +118,11 @@ public class EmailDialogProxy extends TiViewProxy implements ActivityTransitionL
 
 	private Intent buildIntent() {
 		ArrayList<Uri> uris = getAttachmentUris();
-		Intent sendIntent = new Intent((uris != null && uris.size()>1) ? Intent.ACTION_SEND_MULTIPLE : Intent.ACTION_SEND);
+		Intent sendIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "", null));
 		boolean isHtml = false;
 		if (hasProperty("html")) {
 			isHtml = TiConvert.toBoolean(getProperty("html"));
 		}
-		String intentType = baseMimeType(isHtml);
-		sendIntent.setType(intentType);
 		putAddressExtra(sendIntent, Intent.EXTRA_EMAIL, "toRecipients");
 		putAddressExtra(sendIntent, Intent.EXTRA_CC, "ccRecipients");
 		putAddressExtra(sendIntent, Intent.EXTRA_BCC, "bccRecipients");

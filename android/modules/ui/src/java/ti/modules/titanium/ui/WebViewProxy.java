@@ -44,6 +44,7 @@ public class WebViewProxy extends ViewProxy
 	private static final int MSG_RELOAD = MSG_FIRST_ID + 103;
 	private static final int MSG_STOP_LOADING = MSG_FIRST_ID + 104;
 	private static final int MSG_SET_HTML = MSG_FIRST_ID + 105;
+	private static final int MSG_SET_USER_AGENT = MSG_FIRST_ID + 106;
 
 	protected static final int MSG_LAST_ID = MSG_FIRST_ID + 999;
 	private static String fusername;
@@ -148,6 +149,10 @@ public class WebViewProxy extends ViewProxy
 				HashMap<String, Object> d = (HashMap<String, Object>) getProperty(OPTIONS_IN_SETHTML);
 				getWebView().setHtml(html, d);
 				return true;
+			case MSG_SET_USER_AGENT:
+				String userAgent = TiConvert.toString(getProperty("userAgent"));
+				getWebView().setUserAgentString(userAgent);
+				return true;
 			}
 		}
 		return super.handleMessage(msg);
@@ -170,9 +175,12 @@ public class WebViewProxy extends ViewProxy
 	@Kroll.method @Kroll.setProperty
 	public void setUserAgent(String userAgent)
 	{
-		TiUIWebView currWebView = getWebView();
-		if (currWebView != null) {
-			currWebView.setUserAgentString(userAgent);
+		setProperty("userAgent", userAgent);
+
+		if (TiApplication.isUIThread()) {
+			getWebView().setUserAgentString(userAgent);
+		} else {
+			getMainHandler().sendEmptyMessage(MSG_SET_USER_AGENT);
 		}
 	}
 

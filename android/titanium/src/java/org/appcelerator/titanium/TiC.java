@@ -121,6 +121,11 @@ public class TiC
 	/**
 	 * @module.api
 	 */
+	public static final String EVENT_DISPOSE_HANDLE = "disposehandle";
+
+	/**
+	 * @module.api
+	 */
 	public static final String EVENT_DOUBLE_TAP = "doubletap";
 
 	/**
@@ -186,6 +191,11 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String EVENT_LONGPRESS = "longpress";
+	
+	/**
+	 * @module.api
+	 */
+	public static final String EVENT_MARKER = "marker";
 
 	/**
 	 * @module.api
@@ -445,6 +455,11 @@ public class TiC
 	/**
 	 * @module.api
 	 */
+	public static final String EVENT_TASK_REMOVED = "taskremoved";
+
+	/**
+	 * @module.api
+	 */
 	public static final String EVENT_TOUCH_CANCEL = "touchcancel";
 
 	/**
@@ -471,6 +486,11 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String EVENT_PROPERTY_URL = "url";
+	
+	/**
+	 * @module.api
+	 */
+	public static final String EVENT_USER_LEAVE_HINT = "userleavehint";
 	
 
 	/**
@@ -792,6 +812,16 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_BYTE_ORDER = "byteOrder";
+	
+	/**
+	 * @module.api
+	 */
+	public static final String PROPERTY_CACHE_MODE = "cacheMode";
+
+	/**
+	 * @module.api
+	 */
+	public static final String PROPERTY_CALENDAR_VIEW_SHOWN = "calendarViewShown";
 
 	/**
 	 * @module.api
@@ -871,7 +901,7 @@ public class TiC
 	/**
 	 * @module.api
 	 */
-	public static final String PROPERTY_COORDS = "coords";
+	public static final String PROPERTY_COMMENT = "comment";
 
 	/**
 	 * @module.api
@@ -912,6 +942,11 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_CONTENT_WIDTH = "contentWidth";
+
+	/**
+	 * @module.api
+	 */
+	public static final String PROPERTY_COORDS = "coords";
 
 	/**
 	 * @module.api
@@ -1057,6 +1092,11 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_EXIT_ON_CLOSE = "exitOnClose";
+
+	/**
+	 * @module.api
+	 */
+	public static final String PROPERTY_EXPIRY_DATE = "expiryDate";
 
 	/**
 	 * @module.api
@@ -1229,6 +1269,11 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_HTML = "html";
+
+	/**
+	 * @module.api
+	 */
+	public static final String PROPERTY_HTTP_ONLY = "httponly";
 
 	/**
 	 * @module.api
@@ -1629,6 +1674,11 @@ public class TiC
 	/**
 	 * @module.api
 	 */
+	public static final String PROPERTY_PATH = "path";
+
+	/**
+	 * @module.api
+	 */
 	public static final String PROPERTY_PASSWORD_MASK = "passwordMask";
 
 	/**
@@ -1832,6 +1882,11 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_SECTIONS = "sections";
+
+	/**
+	 * @module.api
+	 */
+	public static final String PROPERTY_SECURE = "secure";
 
 	/**
 	 * @module.api
@@ -2155,6 +2210,11 @@ public class TiC
 	/**
 	 * @module.api
 	 */
+	public static final String PROPERTY_VERSION = "version";
+
+	/**
+	 * @module.api
+	 */
 	public static final String PROPERTY_VERTICAL_ALIGN = "verticalAlign";
 
 	/**
@@ -2256,9 +2316,15 @@ public class TiC
 	 * @module.api
 	 */
 	public static final String PROPERTY_ZOOM_ENABLED = "zoomEnabled";
+	
+	/**
+	 * @module.api
+	 */
+	public static final String PROPERTY_LIGHT_TOUCH_ENABLED = "lightTouchEnabled";
 	public static final String SIZE_AUTO = "auto";
 	public static final String URL_APP_PREFIX = "app://";
 	public static final String URL_APP_SCHEME = "app";
 	public static final String URL_APP_JS = "app://app.js";
 	public static final String URL_ANDROID_ASSET_RESOURCES = "file:///android_asset/Resources/";
 }
+
